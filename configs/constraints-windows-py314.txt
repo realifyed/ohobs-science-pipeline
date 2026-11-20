@@ -2,7 +2,7 @@
 numpy==2.3.4
 scipy==1.18.1
 astropy==7.2.0
-astropy-iers-data==0.2026.9.21.0.56.25
+astropy-iers-data==0.2026.11.16.0.37.44
 pyerfa==2.0.1.5
 pydantic==2.13.5
 pydantic-core==2.46.5
