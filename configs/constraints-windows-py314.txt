@@ -1,7 +1,7 @@
 # Exact dependency versions in the Windows Python 3.14 validation environment.
 numpy==2.3.4
 scipy==1.18.1
-astropy==7.2.0
+astropy==8.0.2
 astropy-iers-data==0.2026.9.21.0.56.25
 pyerfa==2.0.1.5
 pydantic==2.13.5
