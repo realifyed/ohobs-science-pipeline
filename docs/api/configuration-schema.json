@@ -1,0 +1,1014 @@
+{
+  "$defs": {
+    "Astrometry": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "default": "astrometry_net",
+          "enum": [
+            "astrometry_net",
+            "ansvr",
+            "ansvr_http",
+            "local",
+            "online",
+            "auto"
+          ],
+          "title": "Backend",
+          "type": "string"
+        },
+        "executable": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Executable"
+        },
+        "ansvr_root": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ansvr Root"
+        },
+        "ansvr_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ansvr Url"
+        },
+        "allow_private_ansvr": {
+          "default": false,
+          "title": "Allow Private Ansvr",
+          "type": "boolean"
+        },
+        "backend_config": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Backend Config"
+        },
+        "online": {
+          "$ref": "#/$defs/Online"
+        },
+        "fallback_enabled": {
+          "default": false,
+          "title": "Fallback Enabled",
+          "type": "boolean"
+        },
+        "index_manifest": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Index Manifest"
+        },
+        "catalogue": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalogue"
+        },
+        "gaia": {
+          "$ref": "#/$defs/Gaia"
+        },
+        "catalogue_independence_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalogue Independence Evidence"
+        },
+        "timeout_s": {
+          "default": 120,
+          "minimum": 1,
+          "title": "Timeout S",
+          "type": "integer"
+        },
+        "attempts": {
+          "default": 1,
+          "maximum": 3,
+          "minimum": 1,
+          "title": "Attempts",
+          "type": "integer"
+        },
+        "scale_min": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scale Min"
+        },
+        "scale_max": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scale Max"
+        },
+        "pointing_radius_deg": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 180,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pointing Radius Deg"
+        },
+        "max_rms_arcsec": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Rms Arcsec"
+        },
+        "match_radius_arcsec": {
+          "default": 5,
+          "exclusiveMinimum": 0,
+          "title": "Match Radius Arcsec",
+          "type": "number"
+        },
+        "min_matches": {
+          "default": 10,
+          "minimum": 3,
+          "title": "Min Matches",
+          "type": "integer"
+        },
+        "min_match_fraction": {
+          "default": 0.5,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Min Match Fraction",
+          "type": "number"
+        },
+        "min_coverage_fraction": {
+          "default": 0.15,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Min Coverage Fraction",
+          "type": "number"
+        },
+        "max_outlier_fraction": {
+          "default": 0.25,
+          "exclusiveMaximum": 1,
+          "minimum": 0,
+          "title": "Max Outlier Fraction",
+          "type": "number"
+        }
+      },
+      "title": "Astrometry",
+      "type": "object"
+    },
+    "Calibration": {
+      "additionalProperties": false,
+      "properties": {
+        "bias_only_max_exposure_s": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bias Only Max Exposure S"
+        },
+        "bias_only_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bias Only Evidence"
+        },
+        "temperature_tolerance_c": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Temperature Tolerance C",
+          "type": "number"
+        },
+        "temperature_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature Evidence"
+        },
+        "method": {
+          "default": "mean",
+          "enum": [
+            "mean",
+            "median",
+            "clipped_mean"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "min_frames": {
+          "default": 5,
+          "minimum": 3,
+          "title": "Min Frames",
+          "type": "integer"
+        },
+        "clip_sigma": {
+          "default": 4,
+          "exclusiveMinimum": 0,
+          "title": "Clip Sigma",
+          "type": "number"
+        },
+        "bootstrap_samples": {
+          "default": 64,
+          "minimum": 32,
+          "title": "Bootstrap Samples",
+          "type": "integer"
+        },
+        "flat_min_response": {
+          "default": 0.1,
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Flat Min Response",
+          "type": "number"
+        },
+        "flat_peak_code_fraction_max": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1,
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Flat Peak Code Fraction Max"
+        },
+        "detector_keys": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Detector Keys",
+          "type": "array"
+        },
+        "optical_keys": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Optical Keys",
+          "type": "array"
+        }
+      },
+      "title": "Calibration",
+      "type": "object"
+    },
+    "Detector": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "readout": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Readout"
+        },
+        "manufacturer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Manufacturer"
+        },
+        "sensor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sensor"
+        },
+        "monochrome": {
+          "const": true,
+          "default": true,
+          "title": "Monochrome",
+          "type": "boolean"
+        },
+        "full_shape": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Full Shape"
+        },
+        "pixel_um": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pixel Um"
+        },
+        "output_bits": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Bits"
+        },
+        "cooling": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cooling"
+        },
+        "gain_e_per_adu": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gain E Per Adu"
+        },
+        "read_noise_e": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Read Noise E"
+        },
+        "saturation": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Saturation"
+        },
+        "linear_max": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Linear Max"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "characterized_settings": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "title": "Characterized Settings",
+          "type": "object"
+        },
+        "bad_pixels_yx": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Bad Pixels Yx",
+          "type": "array"
+        },
+        "hot_pixels_yx": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Hot Pixels Yx",
+          "type": "array"
+        },
+        "dead_pixels_yx": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Dead Pixels Yx",
+          "type": "array"
+        }
+      },
+      "title": "Detector",
+      "type": "object"
+    },
+    "Gaia": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "allow_network": {
+          "default": false,
+          "title": "Allow Network",
+          "type": "boolean"
+        },
+        "cache_dir": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Dir"
+        },
+        "g_limit": {
+          "default": 18,
+          "exclusiveMinimum": 0,
+          "maximum": 22,
+          "title": "G Limit",
+          "type": "number"
+        },
+        "max_rows": {
+          "default": 20000,
+          "maximum": 100000,
+          "minimum": 100,
+          "title": "Max Rows",
+          "type": "integer"
+        },
+        "max_radius_deg": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "maximum": 10,
+          "title": "Max Radius Deg",
+          "type": "number"
+        },
+        "pm_limit_mas_yr": {
+          "default": 12000,
+          "exclusiveMinimum": 0,
+          "maximum": 50000,
+          "title": "Pm Limit Mas Yr",
+          "type": "number"
+        },
+        "timeout_s": {
+          "default": 25,
+          "exclusiveMinimum": 0,
+          "maximum": 120,
+          "title": "Timeout S",
+          "type": "number"
+        }
+      },
+      "title": "Gaia",
+      "type": "object"
+    },
+    "Online": {
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "const": "https://nova.astrometry.net",
+          "default": "https://nova.astrometry.net",
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "timeout_s": {
+          "default": 300,
+          "exclusiveMinimum": 0,
+          "maximum": 3600,
+          "title": "Timeout S",
+          "type": "number"
+        },
+        "request_timeout_s": {
+          "default": 20,
+          "exclusiveMinimum": 0,
+          "maximum": 120,
+          "title": "Request Timeout S",
+          "type": "number"
+        },
+        "poll_s": {
+          "default": 2,
+          "exclusiveMinimum": 0,
+          "maximum": 60,
+          "title": "Poll S",
+          "type": "number"
+        },
+        "retries": {
+          "default": 3,
+          "maximum": 6,
+          "minimum": 0,
+          "title": "Retries",
+          "type": "integer"
+        },
+        "max_concurrent_jobs": {
+          "default": 2,
+          "maximum": 8,
+          "minimum": 1,
+          "title": "Max Concurrent Jobs",
+          "type": "integer"
+        },
+        "max_sources": {
+          "default": 300,
+          "maximum": 1000,
+          "minimum": 6,
+          "title": "Max Sources",
+          "type": "integer"
+        },
+        "max_image_mib": {
+          "default": 48,
+          "maximum": 128,
+          "minimum": 1,
+          "title": "Max Image Mib",
+          "type": "integer"
+        },
+        "upload_mode": {
+          "default": "source_list",
+          "enum": [
+            "source_list",
+            "image",
+            "image_fallback"
+          ],
+          "title": "Upload Mode",
+          "type": "string"
+        },
+        "publicly_visible": {
+          "default": false,
+          "title": "Publicly Visible",
+          "type": "boolean"
+        },
+        "authorize_upload": {
+          "default": false,
+          "title": "Authorize Upload",
+          "type": "boolean"
+        },
+        "authorize_image_upload": {
+          "default": false,
+          "title": "Authorize Image Upload",
+          "type": "boolean"
+        },
+        "catalogue_independence_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalogue Independence Evidence"
+        }
+      },
+      "title": "Online",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "default": "GENERAL_SCIENCE",
+          "enum": [
+            "GENERAL_SCIENCE",
+            "PRECISION_PHOTOMETRY",
+            "ASTROMETRY"
+          ],
+          "title": "Profile",
+          "type": "string"
+        },
+        "threshold_sigma": {
+          "default": 6,
+          "exclusiveMinimum": 0,
+          "title": "Threshold Sigma",
+          "type": "number"
+        },
+        "detection_smoothing_sigma_px": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 12,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detection Smoothing Sigma Px"
+        },
+        "box": {
+          "default": 64,
+          "minimum": 8,
+          "title": "Box",
+          "type": "integer"
+        },
+        "fit_radius": {
+          "default": 6,
+          "minimum": 3,
+          "title": "Fit Radius",
+          "type": "integer"
+        },
+        "max_sources": {
+          "default": 500,
+          "minimum": 1,
+          "title": "Max Sources",
+          "type": "integer"
+        },
+        "min_sources": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min Sources"
+        },
+        "max_fwhm_px": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Fwhm Px"
+        },
+        "warn_fwhm_px": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Warn Fwhm Px"
+        },
+        "cosmic_candidate_sigma": {
+          "anyOf": [
+            {
+              "minimum": 5,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cosmic Candidate Sigma"
+        },
+        "max_ellipticity": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Ellipticity"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "node": {
+      "title": "Node",
+      "type": "string"
+    },
+    "synthetic_test": {
+      "default": false,
+      "title": "Synthetic Test",
+      "type": "boolean"
+    },
+    "detector": {
+      "$ref": "#/$defs/Detector"
+    },
+    "calibration": {
+      "$ref": "#/$defs/Calibration"
+    },
+    "photon_expectation": {
+      "anyOf": [
+        {
+          "format": "path",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Photon Expectation"
+    },
+    "photon_expectation_evidence": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Photon Expectation Evidence"
+    },
+    "quality": {
+      "$ref": "#/$defs/Quality"
+    },
+    "astrometry": {
+      "$ref": "#/$defs/Astrometry"
+    },
+    "work_dir": {
+      "default": "osp-work",
+      "format": "path",
+      "title": "Work Dir",
+      "type": "string"
+    },
+    "raw_dir": {
+      "anyOf": [
+        {
+          "format": "path",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Raw Dir"
+    },
+    "calibration_dir": {
+      "anyOf": [
+        {
+          "format": "path",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Calibration Dir"
+    },
+    "workers": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Workers",
+      "type": "integer"
+    },
+    "memory_mib": {
+      "default": 1024,
+      "minimum": 16,
+      "title": "Memory Mib",
+      "type": "integer"
+    },
+    "max_input_mib": {
+      "default": 1024,
+      "minimum": 1,
+      "title": "Max Input Mib",
+      "type": "integer"
+    },
+    "worker_timeout_s": {
+      "default": 900,
+      "minimum": 1,
+      "title": "Worker Timeout S",
+      "type": "integer"
+    },
+    "product_schema": {
+      "const": 1,
+      "default": 1,
+      "title": "Product Schema",
+      "type": "integer"
+    },
+    "overrides": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          }
+        ]
+      },
+      "title": "Overrides",
+      "type": "object"
+    }
+  },
+  "required": [
+    "node"
+  ],
+  "title": "Config",
+  "type": "object"
+}

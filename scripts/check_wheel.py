@@ -1,4 +1,4 @@
-"""Verify Core alone, or Core with Simulation, in a new isolated environment."""
+"""Verify Core wheel/source, alone or with Simulation, in a fresh environment."""
 
 import argparse
 import os
@@ -9,7 +9,7 @@ from pathlib import Path
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("wheel", type=Path)
+    parser.add_argument("wheel", type=Path, help="Core wheel, sdist or source directory")
     parser.add_argument("work", type=Path)
     parser.add_argument("--wheelhouse", type=Path, help="optional offline dependency source")
     parser.add_argument("--sim-wheel", type=Path, help="also test the optional Simulation wheel")

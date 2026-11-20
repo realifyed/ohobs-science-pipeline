@@ -2,6 +2,12 @@ include LICENSE CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md CITA
 include .editorconfig .gitattributes .pre-commit-config.yaml
 recursive-include configs *.yaml *.txt
 recursive-include docs *.md
+recursive-include docs/api *.json
+include docs/validation/repository-verification.json
+include docs/validation/repository-science-checks.json
+include docs/commissioning/reference.json docs/commissioning/full-frame.json
+include docs/commissioning/batch.jsonl
+include docs/commissioning/raw-integrity.log docs/commissioning/tests.log docs/commissioning/wheel-smoke.log
 recursive-include benchmarks *.py
 recursive-include scripts *.ps1 *.py
 include examples/core-smoke-fixture.zip examples/README.md

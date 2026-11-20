@@ -1,0 +1,163 @@
+{
+  "simulation": {
+    "seed": 1234,
+    "generated_files": 78,
+    "results": [
+      {
+        "input": "light-00000.fits",
+        "product_state": "PARTIAL",
+        "pixels": 12288,
+        "mean_bias_adu": -0.07738287078204624,
+        "rms_adu": 6.693981677105083,
+        "median_row_bias_adu": -0.13942074089093237,
+        "normalized_sd": 1.0169309016062074,
+        "coverage_1sigma": 0.6844075520833334,
+        "coverage_1_96sigma": 0.9469401041666666,
+        "centroid_median_px": 0.030431350104015015,
+        "sources": 19,
+        "median_aperture_fractional_error": -0.004646981419223178,
+        "fwhm_px": 3.2452442836772972,
+        "ellipticity": 0.07375815965708366
+      },
+      {
+        "input": "light-00001.fits",
+        "product_state": "PARTIAL",
+        "pixels": 12288,
+        "mean_bias_adu": -0.040842354112464944,
+        "rms_adu": 6.769454987344335,
+        "median_row_bias_adu": -0.05532475798656246,
+        "normalized_sd": 1.0166010221119357,
+        "coverage_1sigma": 0.679931640625,
+        "coverage_1_96sigma": 0.9464518229166666,
+        "centroid_median_px": 0.03541104527878225,
+        "sources": 20,
+        "median_aperture_fractional_error": -0.0049385787257035605,
+        "fwhm_px": 3.235093758277009,
+        "ellipticity": 0.09389406723878974
+      },
+      {
+        "input": "light-00002.fits",
+        "product_state": "PARTIAL",
+        "pixels": 12288,
+        "mean_bias_adu": -0.006713799458766055,
+        "rms_adu": 6.791146708808814,
+        "median_row_bias_adu": 0.039019764707119556,
+        "normalized_sd": 1.0130412346185158,
+        "coverage_1sigma": 0.678466796875,
+        "coverage_1_96sigma": 0.9447428385416666,
+        "centroid_median_px": 0.03274305690935229,
+        "sources": 18,
+        "median_aperture_fractional_error": -0.0007875381939072424,
+        "fwhm_px": 3.1989310299690703,
+        "ellipticity": 0.08398630414528852
+      }
+    ]
+  },
+  "reference_comparison": {
+    "reference_package": "Astropy CCDData (ccdproc unavailable)",
+    "pixel_count": 1280,
+    "aperture_pixels": 154,
+    "truth_aperture_adu": 12538.692577895737,
+    "osp_aperture_adu": 12674.32241524675,
+    "normalized_residual_mean": -0.005782800646402758,
+    "normalized_residual_sd": 1.0223333957189344,
+    "coverage_1sigma": 0.675,
+    "coverage_1_96sigma": 0.93359375,
+    "comparisons": {
+      "established_workflow": {
+        "max_abs_difference_adu": 5.115907697472721e-13,
+        "rms_difference_adu": 1.4072457636279184e-13,
+        "aperture_difference_adu": -1.7479351299698465e-12,
+        "max_abs_uncertainty_difference_adu": 1.7763568394002505e-14,
+        "max_abs_row_mean_adu": 4.440892098500626e-14,
+        "quadrant_mean_difference_adu": [
+          1.6076029396572268e-14,
+          -1.9673151996357773e-14,
+          -4.6629367034256575e-15,
+          4.04121180963557e-15
+        ]
+      },
+      "independent_scalar_arithmetic": {
+        "max_abs_difference_adu": 4.405364961712621e-13,
+        "rms_difference_adu": 1.1399796831711477e-13,
+        "aperture_difference_adu": 2.4726887204451486e-12,
+        "max_abs_uncertainty_difference_adu": 1.5987211554602254e-14,
+        "max_abs_row_mean_adu": 5.3290705182007514e-14,
+        "quadrant_mean_difference_adu": [
+          7.860379014346108e-15,
+          -9.14823772291129e-15,
+          2.531308496145357e-15,
+          3.8635761256955444e-15
+        ]
+      }
+    }
+  },
+  "uncertainty_experiment": {
+    "low_counts": [
+      {
+        "signal_e": 0.0,
+        "trials": 180000,
+        "analytic_variance_e2": 19.59375,
+        "empirical_variance_over_analytic": 1.0093026580728868,
+        "mean_osp_variance_over_analytic": 1.0906031656073552,
+        "normalized_mean": -0.0441100303336418,
+        "within_1err": 0.7091944444444445,
+        "within_1_96err": 0.9671444444444445,
+        "negative_fraction": 0.5005388888888889
+      },
+      {
+        "signal_e": 1.0,
+        "trials": 180000,
+        "analytic_variance_e2": 20.59375,
+        "empirical_variance_over_analytic": 1.0015706057554956,
+        "mean_osp_variance_over_analytic": 1.0651197199797549,
+        "normalized_mean": -0.05788687587663318,
+        "within_1err": 0.7032277777777778,
+        "within_1_96err": 0.9646277777777778,
+        "negative_fraction": 0.4180111111111111
+      },
+      {
+        "signal_e": 5.0,
+        "trials": 180000,
+        "analytic_variance_e2": 24.59375,
+        "empirical_variance_over_analytic": 0.9976395325433194,
+        "mean_osp_variance_over_analytic": 1.0162581118856893,
+        "normalized_mean": -0.0798160348614809,
+        "within_1err": 0.6833444444444444,
+        "within_1_96err": 0.9528166666666666,
+        "negative_fraction": 0.15586666666666665
+      },
+      {
+        "signal_e": 25.0,
+        "trials": 180000,
+        "analytic_variance_e2": 44.59375,
+        "empirical_variance_over_analytic": 0.9949496666858116,
+        "mean_osp_variance_over_analytic": 1.0002043384159185,
+        "normalized_mean": -0.07559640428430946,
+        "within_1err": 0.6829555555555555,
+        "within_1_96err": 0.94465,
+        "negative_fraction": 3.3333333333333335e-05
+      },
+      {
+        "signal_e": 100.0,
+        "trials": 180000,
+        "analytic_variance_e2": 119.59375,
+        "empirical_variance_over_analytic": 0.9956594572563495,
+        "mean_osp_variance_over_analytic": 0.9998775491010616,
+        "normalized_mean": -0.04735756079453972,
+        "within_1err": 0.6834,
+        "within_1_96err": 0.9481444444444445,
+        "negative_fraction": 0.0
+      }
+    ],
+    "shared_calibrators": {
+      "trials": 240000,
+      "cross_exposure_covariance_e2": 2.027089969538641,
+      "first_order_cross_exposure_covariance_e2": 2.14,
+      "cross_pixel_covariance_normalized_flat": 2.3448478085359197e-05,
+      "first_order_cross_pixel_covariance": 2.34375e-05,
+      "cross_exposure_covariance_standard_error_e2": 0.15514391515945422,
+      "cross_pixel_covariance_standard_error": 1.128218543352291e-07
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # Release status
 
+For source installation and the current repository audit, see
+[repository improvements and verification](repository-improvements.md).
+The records below retain the prior release-candidate evidence.
+
 **OSP 0.1.0rc2** is a scientific software pre-release for Open Horizon
 Observatory. Use the source archive and matching verification evidence
 from the same release bundle.

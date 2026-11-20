@@ -7,8 +7,8 @@ geometric WCS checks and local Gaia comparison.
 ## Rotate and load the key
 
 Sign in to [Astrometry.net](https://nova.astrometry.net/) and open your
-profile to locate your API key. Treat any key previously shared in conversation
-as exposed. Ask Astrometry.net support to revoke and replace it if the profile
+profile to locate your API key. Treat any disclosed key as exposed.
+Ask Astrometry.net support to revoke and replace it if the profile
 does not provide a rotation control. Enter the replacement only into your
 local terminal or credential manager.
 
@@ -20,7 +20,7 @@ it does not read dotenv files.
 $secret = Read-Host 'Rotated Astrometry.net API key' -AsSecureString
 $env:OSP_ASTROMETRY_API_KEY = [Net.NetworkCredential]::new('', $secret).Password
 Remove-Variable secret
-osp astrometry probe --backend online --config configs/ohobs-01.example.yaml
+osp astrometry probe --backend online --config observatory.yaml
 Remove-Item Env:OSP_ASTROMETRY_API_KEY
 ```
 
@@ -39,7 +39,7 @@ session tokens remain in process memory and are excluded from receipts.
 
 ```powershell
 osp astrometry solve 'observation.fits' --backend online --allow-online `
-  --config configs/ohobs-01.example.yaml --output nova-first
+  --config observatory.yaml --output nova-first
 ```
 
 For an explicitly authorized image solve, set `online.upload_mode: image`
@@ -54,9 +54,9 @@ terminal Nova solve failure.
 ## Local and automatic modes
 
 ```powershell
-osp astrometry probe --backend local --config configs/ohobs-01.example.yaml
+osp astrometry probe --backend local --config observatory.yaml
 osp astrometry solve 'observation.fits' --backend local `
-  --config configs/ohobs-01.example.yaml --output local-first
+  --config observatory.yaml --output local-first
 ```
 
 Start ANSVR from the Windows Start menu if needed. The default is
@@ -84,16 +84,18 @@ confirm that no submission was created, `--abandon` releases the ambiguous
 receipt's queue slot while retaining the no-replay record.
 
 ```powershell
-osp astrometry status RECEIPT_ID --wait --config configs/ohobs-01.example.yaml
+osp astrometry status RECEIPT_ID --wait --config observatory.yaml
 osp astrometry verify 'observation.fits' --wcs nova-first/candidate.wcs `
-  --solve-report nova-first/validation.json --config configs/ohobs-01.example.yaml
+  --solve-report nova-first/validation.json --config observatory.yaml
 ```
 
 After resumption, rerun the original solve with a fresh output directory to
 apply shared geometry and Gaia verification. The saved WCS can be reused.
 For batch products already published as PARTIAL, use a new `--revision` to
 create new products while preserving the prior evidence and reusing receipts.
-The standalone verify command performs no network requests. It checks the
+The standalone verify command never uploads an image or source list. Gaia
+retrieval can make a reference query when explicitly enabled by configuration;
+set gaia.allow_network false for offline cache-only verification. It checks the
 prior report's WCS checksum and extraction digest before allowing a holdout
 claim. The configured reference ECSV must cover the actual field. Independent
 catalogue evidence must apply to the backend that actually solved it. Nova's

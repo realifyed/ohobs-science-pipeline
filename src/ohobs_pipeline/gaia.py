@@ -113,7 +113,9 @@ def reference(wcs, shape: tuple[int, int], epoch, settings: Gaia, root: Path) ->
                 resources.extend(resource.resources)
             if any(info.name == "QUERY_STATUS" and info.value != "OK" for info in infos):
                 raise GaiaError("Gaia TAP query failed or was truncated")
-            table = document.get_first_table().to_table()
+            # TAP field IDs need not match the selected ADQL column names.
+            # ESA uses ID="SOURCE_ID" with name="source_id" for Gaia DR3.
+            table = document.get_first_table().to_table(use_names_over_ids=True)
             if not set(COLUMNS).issubset(table.colnames) or not 0 < len(table) <= settings.max_rows:
                 raise GaiaError("Gaia TAP returned empty, incomplete, or row-limited data")
         except GaiaError:

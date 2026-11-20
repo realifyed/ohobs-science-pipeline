@@ -1,14 +1,15 @@
 # Reduce a synthetic observing session
 
-Python 3.11 or later is supported by package metadata. Local commissioning
+Python 3.11 or later is required by package metadata. Local commissioning
 used Windows and Python 3.14.7. The hosted Windows/Linux matrix is defined
 and still awaits independent runs.
 
-In PowerShell, install both supplied wheels and generate a fresh dataset:
+From the repository root in PowerShell, install both source packages and
+generate a fresh dataset (no bundled wheels are required):
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install .\ohobs_science_pipeline-0.1.0rc2-py3-none-any.whl .\ohobs_science_sim-0.1.0rc2-py3-none-any.whl
+.\.venv\Scripts\python.exe -m pip install . ./packages/osp-sim
 $osp = '.\.venv\Scripts\osp.exe'
 & $osp doctor
 & '.\.venv\Scripts\osp-sim.exe' generate --profile standard --seed 1234 --output example --adversarial

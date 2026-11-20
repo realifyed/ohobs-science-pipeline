@@ -14,6 +14,7 @@ __pycache__/
 htmlcov/
 coverage.xml
 .venv/
+.venv-*/
 venv/
 env/
 ENV/
@@ -38,6 +39,7 @@ Desktop.ini
 *.bak
 
 # Credentials and local configuration
+/env
 .env
 .env.*
 !/.env.example
@@ -61,6 +63,8 @@ config.private.yml
 
 # Observational data, simulator output and pipeline workspaces
 /Test-data/
+/raw/
+/calibration/
 /data/raw/
 /data/processed/
 /data/calibration/
@@ -70,6 +74,9 @@ raw-observations/
 calibration-library/
 calibration_library/
 synthetic-demo/
+/example/
+/demo/
+/adversarial-demo/
 osp-work/
 processing-output/
 pipeline-output/
@@ -84,6 +91,12 @@ tmp/
 temp/
 
 # Downloads, local reports and release staging
+/local-*.txt
+/observatory.yaml
+/products/
+/exposure.html
+/batch.html
+/diagnostics/
 catalogue-cache/
 gaia-cache/
 astrometry-indexes/

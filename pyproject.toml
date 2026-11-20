@@ -5,15 +5,20 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ohobs-science-pipeline"
 version = "0.1.0rc2"
-description = "Open-source astronomical FITS calibration, image quality assessment, and astrometry for student-run observatories."
+description = "Astronomical FITS calibration, uncertainty propagation, image quality assessment, and astrometric validation."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "BSD-3-Clause"
 authors = [{name = "Open Horizon Observatory (OHOBS)"}]
 dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "astropy>=7.2,<9", "pydantic>=2.8,<3", "PyYAML>=6,<7"]
 
+[project.urls]
+Repository = "https://github.com/realifyed/ohobs-science-pipeline"
+Documentation = "https://github.com/realifyed/ohobs-science-pipeline#readme"
+Issues = "https://github.com/realifyed/ohobs-science-pipeline/issues"
+
 [project.optional-dependencies]
-dev = ["pytest>=8,<10", "ruff>=0.9,<1", "mypy>=1.13,<3", "types-PyYAML>=6", "build>=1,<2"]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1", "mypy>=1.13,<3", "types-PyYAML>=6", "build>=1,<2", "twine>=6,<8"]
 benchmark = ["psutil>=6,<8"]
 diagnostics = ["matplotlib>=3.9,<4"]
 

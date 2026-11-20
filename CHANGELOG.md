@@ -2,6 +2,12 @@
 
 ## 0.1.0rc2
 
+- Added source-first Windows/Linux guides, generic observatory configuration,
+  scientific workflow documentation and generated schema/installed CLI reference.
+- Extended independent installed CLI checks to metadata, QC and HTML reporting;
+  added documentation consistency checks to CI. Numerical algorithms are unchanged.
+- Fixed Gaia TAP VOTable ingestion to prefer column names over XML IDs; ESA's
+  uppercase SOURCE_ID field ID no longer rejects an otherwise valid catalogue.
 - Split seeded FITS generation into the independently packaged
   `ohobs-science-sim` distribution. Use `osp-sim generate`.
 - Added explicit synthetic test mode and checked the origin of raw frames,

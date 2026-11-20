@@ -8,8 +8,8 @@ Include the OSP version, affected component, environment, and a small synthetic
 reproduction. Share observational files, raw FITS headers and processing logs
 only through an approved channel after removing identifying metadata.
 
-Treat any Astrometry.net API key previously shared in conversation as
-compromised. Revoke and rotate it before publication. Provide the replacement
+Treat any disclosed Astrometry.net API key as compromised. Revoke and rotate
+it through the service before reuse. Provide credentials
 only through the local process environment as `OSP_ASTROMETRY_API_KEY`.
 The public `.env.example` intentionally leaves it blank. The
 [Nova credential guide](docs/installation/ONLINE_ASTROMETRY.md) covers setup.

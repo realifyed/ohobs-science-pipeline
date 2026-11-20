@@ -1,0 +1,61 @@
+schema_version: 1
+node: OHOBS-01
+work_dir: ../../osp-work
+raw_dir: ../../raw
+calibration_dir: ../../calibration
+workers: 1
+memory_mib: 1024
+worker_timeout_s: 900
+product_schema: 1
+detector:
+  manufacturer: QHYCCD
+  model: QHYminiCam8M
+  sensor: Sony IMX585
+  monochrome: true
+  readout: Full Resolution
+  full_shape: [2180, 3856]
+  pixel_um: 2.9
+  output_bits: 16
+  cooling: Dual-stage TEC
+  gain_e_per_adu: null
+  read_noise_e: null
+  saturation: null
+  linear_max: null
+calibration:
+  temperature_tolerance_c: 0
+  method: mean
+  min_frames: 5
+  flat_min_response: 0.1
+  flat_peak_code_fraction_max: null  # Optional input screen. Set from commissioning evidence.
+  detector_keys: [USBLIMIT, ROWORDER]
+quality:
+  profile: GENERAL_SCIENCE
+astrometry:
+  backend: astrometry_net
+  executable: solve-field
+  # For ANSVR on Windows set backend: ansvr, remove executable, and set ansvr_root.
+  # To use the HTTP service set backend: ansvr_http, remove executable, and set
+  # ansvr_url: http://127.0.0.1:8080 (use the port reported by Ansvr Settings).
+  # Alternatively choose local (loopback ANSVR), online (Nova), or auto.
+  # Remove executable when choosing local or auto directly in YAML.
+  fallback_enabled: false
+  online:
+    endpoint: https://nova.astrometry.net
+    timeout_s: 300
+    poll_s: 2
+    max_concurrent_jobs: 2
+    upload_mode: source_list
+    publicly_visible: false
+    authorize_upload: false
+    authorize_image_upload: false
+  index_manifest: null
+  timeout_s: 120
+  catalogue: null
+  catalogue_independence_evidence: null
+  max_rms_arcsec: null
+# The supplied files lack BUNIT and a unique optical configuration ID.
+# Verify operator assertions before enabling them for an acquisition.
+overrides: {}
+# overrides:
+#   unit: adu
+#   optics: OHOBS-01-Askar80ED-1x-flattener-config-A

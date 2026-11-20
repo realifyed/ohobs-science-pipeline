@@ -17,7 +17,8 @@ from ohobs_pipeline.config import Astrometry, Gaia
 from ohobs_pipeline.quality import Source
 
 
-def test_auto_gaia_cache_offline_and_epoch(tmp_path, monkeypatch):
+@pytest.mark.parametrize("source_identifier", ["source_id", "SOURCE_ID"])
+def test_auto_gaia_cache_offline_and_epoch(tmp_path, monkeypatch, source_identifier):
     wcs = WCS(naxis=2)
     wcs.wcs.ctype = ["RA---TAN", "DEC--TAN"]
     wcs.wcs.crval = [359.999, -25]
@@ -45,12 +46,15 @@ def test_auto_gaia_cache_offline_and_epoch(tmp_path, monkeypatch):
     )
     buffer = io.BytesIO()
     fixture.write(buffer, format="votable")
+    payload = buffer.getvalue()
+    assert payload.count(b'ID="source_id"') == 1
+    payload = payload.replace(b'ID="source_id"', f'ID="{source_identifier}"'.encode())
     queries = []
 
     def download(adql, _settings):
         queries.append(adql)
         assert "gaiadr3.gaia_source" in adql and "POWER(pmra,2)" in adql and "TOP" in adql
-        return buffer.getvalue()
+        return payload
 
     monkeypatch.setattr(gaia, "_download", download)
     settings = Astrometry(

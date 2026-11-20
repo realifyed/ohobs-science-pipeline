@@ -1,6 +1,6 @@
 # OHOBS observational commissioning
 
-**VERIFIED inventory**. The [98-row inventory](OHOBS_FITS_INVENTORY.csv) enumerates byte SHA-256, detector and optical cards, UTC start and average, FITS storage scaling, pointing, code extrema, median and count at 65520. All hashes are distinct. Data contain 60 flats and 38 light files, and zero dark, bias, or flat-dark files. No raw file contained a celestial WCS. The UT start interval is 2026-05-03 20:28:26.937 through 22:34:42.571 (2026-05-04 01:58:26.937 through 04:04:42.571 IST).
+**VERIFIED inventory**. The 98-row inventory (private acquisition record; not distributed) enumerates byte SHA-256, detector and optical cards, UTC start and average, FITS storage scaling, pointing, code extrema, median and count at 65520. All hashes are distinct. Data contain 60 flats and 38 light files, and zero dark, bias, or flat-dark files. No raw file contained a celestial WCS. The UT start interval is 2026-05-03 20:28:26.937 through 22:34:42.571 (2026-05-04 01:58:26.937 through 04:04:42.571 IST).
 
 | Group | EXPTIME | CCD-TEMP | Files | Count of pixels at 65520 | Median-code span |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -15,7 +15,7 @@
 
 **VERIFIED metadata**. All inputs have the identical QHYminiCam8M camera ID, no EGAIN, no BUNIT, no optical ID, gain and offset settings 30, Full Resolution, and reported 0 °C set point. The actual reported sensor values above are used for matching. Standard unsigned scaling yields 16-count code spacing in 96 files. The exceptions are a two-code flat and the single-code flat. FITS storage width and code spacing cannot establish electrons per ADU. Differences between DATE and MJD are at most 1.007 ms. DATE-AVG minus nominal start-plus-half-exposure is −0.593 to −0.571 s for lights, and −0.099 to −0.074 s for flats. A timing bias against true shutter times remains UNVERIFIED. Header RA/Dec are pointing hints at best. The two object-name groups have different pointing ranges; use individual pointings and independent solutions rather than a single field of reference stars.
 
-**FAILED real reduction attempt**. The original configuration stops on absent unit and optical ID. A dry run with explicit provisional metadata proceeds to calibration matching and finds zero science darks. All 38 lights are blocked, and no flat has the required flat-dark. No real SCI/ERR or astrometric residual has been produced. The local solve-field executable is absent and the WSL inventory call failed with access denied. See [real-attempt.log](real-attempt.log).
+**FAILED real reduction attempt**. The original configuration stops on absent unit and optical ID. A dry run with explicit provisional metadata proceeds to calibration matching and finds zero science darks. All 38 lights are blocked, and no flat has the required flat-dark. No real SCI/ERR or astrometric residual has been produced. The local solve-field executable is absent and the WSL inventory call failed with access denied. See real-attempt.log (local commissioning record; not distributed).
 
 ## Reproduce the inventory and commissioning
 

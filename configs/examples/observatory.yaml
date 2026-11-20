@@ -1,0 +1,36 @@
+# Copy to observatory.yaml at the repository root for the first-reduction guide.
+# Paths resolve from the YAML location.
+schema_version: 1
+node: EXAMPLE-OBSERVATORY
+work_dir: products
+raw_dir: observations
+calibration_dir: calibration
+workers: 1
+memory_mib: 1024
+max_input_mib: 1024
+worker_timeout_s: 900
+detector:
+  monochrome: true
+  model: null
+  readout: null
+  full_shape: null
+  gain_e_per_adu: null
+  read_noise_e: null
+  saturation: null
+  linear_max: null
+calibration:
+  method: mean
+  min_frames: 5
+  temperature_tolerance_c: 0
+  detector_keys: []
+  optical_keys: []
+quality:
+  profile: GENERAL_SCIENCE
+astrometry:
+  backend: astrometry_net
+  executable: solve-field
+  fallback_enabled: false
+  gaia:
+    enabled: false
+    allow_network: false
+overrides: {}

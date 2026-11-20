@@ -1,6 +1,6 @@
 # Scientific validation report
 
-This report covers OSP 0.1.0a2. The Windows test suite passed all 30 cases. It separates synthetic verification, comparisons and observational commissioning. Machine-readable outputs are [reference.json](reference.json), [tests.log](tests.log) and [inventory.log](inventory.log).
+This report covers OSP 0.1.0a2. The Windows test suite passed all 30 cases. It separates synthetic verification, comparisons and observational commissioning. Machine-readable outputs are [reference.json](reference.json), [tests.log](tests.log) and inventory.log (local commissioning record; not distributed).
 
 | Evidence | Status and result |
 | --- | --- |

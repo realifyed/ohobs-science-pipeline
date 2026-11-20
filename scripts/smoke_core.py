@@ -89,8 +89,14 @@ def run(root: Path, with_simulation: bool) -> dict:
             )
         )["id"]
     raw = root / "light/light-00000.fits"
+    assert (
+        json.loads(call("fits", "inspect", raw, "--config", config))["metadata"]["kind"] == "LIGHT"
+    )
     result = json.loads(call("reduce", raw, "--config", config))
     product = Path(result["path"])
+    assert json.loads(call("qc", product, "--config", config))
+    report = json.loads(call("report", "--product", product, "--html", root / "exposure.html"))
+    assert report["integrity"] == "VERIFIED" and (root / "exposure.html").is_file()
     assert json.loads(call("validate", product)) == json.loads(
         json.dumps(validate_product(product))
     )

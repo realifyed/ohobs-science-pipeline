@@ -1,8 +1,8 @@
 # GitHub publication runbook
 
-Publication requires the owner's explicit approval and a rotated replacement
-for the previously exposed Nova key. Do not copy the credential into GitHub
-settings or CI. Public pull-request verification uses offline test fixtures.
+Review source, historical git objects and hosted CI before publication.
+Rotate any previously disclosed credentials; do not copy live solver keys into
+ordinary pull-request CI. Public verification uses offline test fixtures.
 
 ## Repository settings
 
@@ -11,13 +11,14 @@ settings or CI. Public pull-request verification uses offline test fixtures.
 | Repository | `ohobs-science-pipeline` |
 | Display name | OHOBS Science Pipeline |
 | Project | Open Horizon Observatory (OHOBS) |
-| Description | Open-source astronomical FITS calibration, image quality assessment, and astrometry for student-run observatories. |
+| Description | Astronomical FITS calibration, uncertainty propagation, image quality assessment, and astrometric validation. |
 | License | BSD-3-Clause |
 | Default branch | `main` |
 | Visibility after approval | Public |
 | Topics | astronomy, astrophysics, fits, astrometry, scientific-python, open-science, observatory, telescope, ccd-calibration, photometry |
 
-Choose the real GitHub owner or organization. Create an empty repository
+The current configured remote is https://github.com/realifyed/ohobs-science-pipeline.git.
+Verify the intended destination before publication. For a new public source import, create an empty repository
 with no auto-generated README, license, or ignore file. Use the GitHub
 web interface or GitHub CLI's interactive authentication. Enable private
 vulnerability reporting after creating the repository.
@@ -38,12 +39,12 @@ git add -- .
 git diff --cached --check
 git diff --cached --stat
 git commit -m "Import audited OSP 0.1.0rc2 public source"
-git remote add origin https://github.com/OWNER/ohobs-science-pipeline.git
+git remote add origin https://github.com/realifyed/ohobs-science-pipeline.git
 git remote -v
 git push -u origin main
 ```
 
-Replace `OWNER` with the selected account. Inspect the staged files and
+Inspect the staged files and
 remote URL before continuing. If the destination is already populated,
 inspect its history and coordinate the import with the owner. Keep the
 existing remote configuration intact.
