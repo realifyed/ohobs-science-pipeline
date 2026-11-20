@@ -5,11 +5,7 @@ system developed for the Open Horizon Observatory initiative. It provides
 calibrated FITS products, image-quality assessment, astrometric solutions,
 and reproducible scientific processing for student-run observatories.
 
-**Status:** `0.1.0rc2` is a software pre-release with synthetic scientific
-validation. Real OHOBS detector commissioning and on-sky astrometric
-validation are pending. Local release verification used Windows and CPython
-3.14.7. The package requires Python 3.11 or later. The CI matrix covers
-Windows and Linux on 3.11–3.14, with hosted results pending.
+**Status:** `0.1.0rc2` is a software pre-release
 
 ## Features
 
