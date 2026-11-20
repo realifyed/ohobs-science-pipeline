@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ohobs-science-pipeline"
+version = "0.1.0rc2"
+description = "Open-source astronomical FITS calibration, image quality assessment, and astrometry for student-run observatories."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+authors = [{name = "Open Horizon Observatory (OHOBS)"}]
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "astropy>=7.2,<9", "pydantic>=2.8,<3", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1", "mypy>=1.13,<3", "types-PyYAML>=6", "build>=1,<2"]
+benchmark = ["psutil>=6,<8"]
+diagnostics = ["matplotlib>=3.9,<4"]
+
+[project.scripts]
+osp = "ohobs_pipeline.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "scientific: numerical scientific validation and regression",
+    "simulation: requires the separately installed simulation toolkit",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs = true

@@ -1,0 +1,19 @@
+name: Scientific or software defect
+description: Report a reproducible OSP defect
+body:
+  - type: markdown
+    attributes:
+      value: For security reports, follow SECURITY.md. Use synthetic data for public reproductions.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observation and expected result
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: OSP version, configuration and minimal reproducible example
+      description: Remove private metadata and include the smallest shareable sample.
+    validations:
+      required: true

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ohobs-science-sim"
+version = "0.1.0rc2"
+description = "Seeded synthetic astronomical FITS and truth for OHOBS validation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+authors = [{name = "Open Horizon Observatory (OHOBS)"}]
+dependencies = [
+    "ohobs-science-pipeline>=0.1.0rc2,<0.2",
+    "numpy>=1.26,<3",
+    "astropy>=7.2,<9",
+    "pydantic>=2.8,<3",
+]
+
+[project.scripts]
+osp-sim = "ohobs_sim.cli:main"

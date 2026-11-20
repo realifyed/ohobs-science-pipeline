@@ -1,0 +1,7 @@
+Processing .\dist\ohobs_science_pipeline-0.1.0a2-py3-none-any.whl
+Installing collected packages: ohobs-science-pipeline
+Successfully installed ohobs-science-pipeline-0.1.0a2
+{
+  "version": "0.1.0a2"
+}
+installed OSP config validate passed

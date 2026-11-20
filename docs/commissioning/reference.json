@@ -1,0 +1,39 @@
+{
+  "reference_package": "Astropy CCDData (ccdproc unavailable)",
+  "pixel_count": 1280,
+  "aperture_pixels": 154,
+  "truth_aperture_adu": 12538.692577895737,
+  "osp_aperture_adu": 12674.322415246752,
+  "normalized_residual_mean": -0.005782800646402145,
+  "normalized_residual_sd": 1.0223333957189336,
+  "coverage_1sigma": 0.675,
+  "coverage_1_96sigma": 0.93359375,
+  "comparisons": {
+    "established_workflow": {
+      "max_abs_difference_adu": 4.405364961712621e-13,
+      "rms_difference_adu": 1.4926524743060298e-13,
+      "aperture_difference_adu": -1.6200374375330284e-12,
+      "max_abs_uncertainty_difference_adu": 1.7763568394002505e-14,
+      "max_abs_row_mean_adu": 6.430411758628907e-14,
+      "quadrant_mean_difference_adu": [
+        6.0396132539608514e-15,
+        -5.195843755245732e-15,
+        9.72555369571637e-15,
+        3.8635761256955444e-15
+      ]
+    },
+    "independent_scalar_arithmetic": {
+      "max_abs_difference_adu": 3.694822225952521e-13,
+      "rms_difference_adu": 1.1017923999594507e-13,
+      "aperture_difference_adu": 2.6005864128819667e-12,
+      "max_abs_uncertainty_difference_adu": 1.2434497875801753e-14,
+      "max_abs_row_mean_adu": 3.552713678800501e-14,
+      "quadrant_mean_difference_adu": [
+        -2.176037128265307e-15,
+        5.329070518200751e-15,
+        1.6919798895287386e-14,
+        3.68594044175552e-15
+      ]
+    }
+  }
+}

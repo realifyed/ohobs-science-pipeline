@@ -1,0 +1,79 @@
+name: checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ["3.11", "3.12", "3.13", "3.14"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install ".[dev]"
+      - name: Core unit and integration tests
+        run: python -m pytest --ignore=tests/simulation --ignore=tests/test_uncertainty_commission.py --ignore=tests/test_scientific_audit.py
+      - name: Core scientific regressions
+        run: python -m pytest tests/test_uncertainty_commission.py tests/test_scientific_audit.py
+  combined:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ["3.11", "3.12", "3.13", "3.14"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e ".[dev,diagnostics]" -e ./packages/osp-sim
+      - run: python -m ruff check src packages/osp-sim/src tests benchmarks scripts
+      - run: python -m ruff format --check src packages/osp-sim/src tests benchmarks scripts
+      - run: python -m mypy src packages/osp-sim/src
+      - name: Simulation unit tests
+        run: python -m pytest tests/simulation -m "not scientific"
+      - name: Simulation reproducibility and combined scientific validation
+        run: python -m pytest -ra
+  packaging:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ["3.11", "3.12", "3.13", "3.14"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install "build>=1,<2" "twine>=6,<8"
+      - run: python -m build --outdir dist
+      - run: python -m build packages/osp-sim --outdir dist
+      - run: python -m twine check --strict "dist/*"
+      - name: Core-only clean installation
+        run: >-
+          python -c "import pathlib, subprocess, sys;
+          core = next(pathlib.Path('dist').glob('ohobs_science_pipeline*.whl'));
+          subprocess.run([sys.executable, 'scripts/check_wheel.py', str(core), 'ci-core'], check=True)"
+      - name: Core and simulation clean installation
+        run: >-
+          python -c "import pathlib, subprocess, sys;
+          core = next(pathlib.Path('dist').glob('ohobs_science_pipeline*.whl'));
+          sim = next(pathlib.Path('dist').glob('ohobs_science_sim*.whl'));
+          subprocess.run([sys.executable, 'scripts/check_wheel.py', str(core), 'ci-combined',
+          '--sim-wheel', str(sim)], check=True)"
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - run: python -m pip install ".[diagnostics]" ./packages/osp-sim
+      - run: python -m pip freeze --exclude ohobs-science-pipeline --exclude ohobs-science-sim > resolved-runtime.txt
+      - run: python -m pip install 'pip-audit>=2.9,<3'
+      - run: python -m pip_audit --strict --no-deps -r resolved-runtime.txt

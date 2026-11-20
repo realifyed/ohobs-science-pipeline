@@ -1,0 +1,65 @@
+{
+  "shape_yx": [
+    2180,
+    3856
+  ],
+  "master_input_count_each": 5,
+  "durations_s": {
+    "generate": 2.7229465000000346,
+    "dark_master": 3.0477977000000465,
+    "flat_dark_master": 2.730856700000004,
+    "flat_master": 3.3194600000006176,
+    "reduce": 4.71712959999968,
+    "resume_existing_product": 0.6135059999996884
+  },
+  "stages": [
+    {
+      "previous_stage_duration_s": 5.4000001910026185e-06,
+      "state": "VALIDATING",
+      "utc": "2026-11-20T06:27:32.899703+00:00"
+    },
+    {
+      "previous_stage_duration_s": 0.1169553999998243,
+      "state": "CALIBRATING",
+      "utc": "2026-11-20T06:27:33.016657+00:00"
+    },
+    {
+      "previous_stage_duration_s": 1.1489795999996204,
+      "state": "CALIBRATED",
+      "utc": "2026-11-20T06:27:34.165637+00:00"
+    },
+    {
+      "previous_stage_duration_s": 2.2900000658410136e-05,
+      "state": "QC_RUNNING",
+      "utc": "2026-11-20T06:27:34.165657+00:00"
+    },
+    {
+      "previous_stage_duration_s": 1.9829211999995096,
+      "state": "QC_COMPLETE",
+      "utc": "2026-11-20T06:27:36.148584+00:00"
+    },
+    {
+      "previous_stage_duration_s": 2.5100000129896216e-05,
+      "state": "ASTROMETRY_RUNNING",
+      "utc": "2026-11-20T06:27:36.148603+00:00"
+    },
+    {
+      "previous_stage_duration_s": 0.07681419999971695,
+      "state": "PARTIAL",
+      "utc": "2026-11-20T06:27:36.225419+00:00"
+    }
+  ],
+  "peak_rss_mib": 834.80078125,
+  "system": "Windows-11-10.0.26300-SP0",
+  "cpu": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+  "cpu_count": 12,
+  "python": "3.14.7",
+  "dependencies": {
+    "osp": "0.1.0a2",
+    "numpy": "2.3.4",
+    "scipy": "1.18.1",
+    "astropy": "7.2.0",
+    "pydantic": "2.13.5",
+    "PyYAML": "6.0.3"
+  }
+}

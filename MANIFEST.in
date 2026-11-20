@@ -1,0 +1,13 @@
+include LICENSE CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md CITATION.cff
+include .editorconfig .gitattributes .pre-commit-config.yaml
+recursive-include configs *.yaml *.txt
+recursive-include docs *.md
+recursive-include benchmarks *.py
+recursive-include scripts *.ps1 *.py
+include examples/core-smoke-fixture.zip examples/README.md
+prune Test-data
+exclude OSP_Part_2_Payload_Upload.txt
+exclude OHOBS_Full_Implementation_Directive_UPLOAD.md
+global-exclude .env .env.*
+recursive-include tests *.py
+recursive-include .github *.yml *.md

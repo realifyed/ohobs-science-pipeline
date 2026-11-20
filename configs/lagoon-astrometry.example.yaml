@@ -1,0 +1,15 @@
+node: OHOBS-01
+work_dir: ../osp-work
+quality:
+  detection_smoothing_sigma_px: 3
+  fit_radius: 12
+  max_sources: 220
+astrometry:
+  backend: online
+  scale_min: 0.95
+  scale_max: 1.19
+  pointing_radius_deg: 2
+  online:
+    upload_mode: source_list
+    publicly_visible: false
+    authorize_upload: false

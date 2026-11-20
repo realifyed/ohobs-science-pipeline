@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.fits binary
+*.fit binary
+*.fts binary
+*.fits.gz binary
+*.fz binary
+*.zip binary
+*.png binary
