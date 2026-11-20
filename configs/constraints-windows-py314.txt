@@ -1,5 +1,5 @@
 # Exact dependency versions in the Windows Python 3.14 validation environment.
-numpy==2.3.4
+numpy==2.4.6
 scipy==1.18.1
 astropy==7.2.0
 astropy-iers-data==0.2026.9.21.0.56.25
